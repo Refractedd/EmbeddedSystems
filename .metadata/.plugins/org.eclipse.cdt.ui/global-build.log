@@ -1,0 +1,151 @@
+
+**** Clean-only build of configuration Debug for project tirtos_builds_MSP_EXP432E401Y_release_ccs ****
+
+"C:\\ti\\ccs1200\\ccs\\utils\\bin\\gmake" -k -j 12 clean -O 
+ 
+cleaning ../src/sysbios ...
+DEL /F  "tirtos_builds_MSP_EXP432E401Y_release_ccs.lib"  "configPkg\linker.cmd" "configPkg\compiler.opt" 
+RMDIR /S/Q  "configPkg\" 
+Could Not Find C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\tirtos_builds_MSP_EXP432E401Y_release_ccs\Debug\tirtos_builds_MSP_EXP432E401Y_release_ccs.lib
+Finished clean
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tirtos_builds_MSP_EXP432E401Y_release_ccs ****
+
+"C:\\ti\\ccs1200\\ccs\\utils\\bin\\gmake" -k -j 12 all -O 
+ 
+Building file: "../release.cfg"
+Invoking: XDCtools
+"C:/ti/ccs1200/xdctools_3_62_01_16_core/xs" --xdcpath="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source;C:/ti/simplelink_msp432e4_sdk_4_20_00_12/kernel/tirtos/packages;" xdc.tools.configuro -o configPkg -t ti.targets.arm.elf.M4F -p ti.platforms.msp432:MSP432E401Y -r release -c "C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS" "../release.cfg"
+making package.mak (because of package.bld) ...
+generating interfaces for package configPkg (because package/package.xdc.inc is older than package.xdc) ...
+configuring release.xem4f from package/cfg/release_pem4f.cfg ...
+generating custom ti.sysbios library makefile ... 
+Starting build of library sources ...
+making C:/Users/ninja/Desktop/SCHOOL~2/CODECO~1/tirtos_builds_MSP_EXP432E401Y_release_ccs/src/sysbios/sysbios.aem4f ...
+clem4f C:/ti/simplelink_msp432e4_sdk_4_20_00_12/kernel/tirtos/packages/ti/sysbios/BIOS.c ...
+asmem4f C:/ti/simplelink_msp432e4_sdk_4_20_00_12/kernel/tirtos/packages/ti/sysbios/family/arm/m3/Hwi_asm.sv7M ...
+asmem4f C:/ti/simplelink_msp432e4_sdk_4_20_00_12/kernel/tirtos/packages/ti/sysbios/family/arm/m3/Hwi_asm_switch.sv7M ...
+asmem4f C:/ti/simplelink_msp432e4_sdk_4_20_00_12/kernel/tirtos/packages/ti/sysbios/family/arm/m3/IntrinsicsSupport_asm.sv7M ...
+asmem4f C:/ti/simplelink_msp432e4_sdk_4_20_00_12/kernel/tirtos/packages/ti/sysbios/family/arm/m3/TaskSupport_asm.sv7M ...
+arem4f BIOS.obj m3_Hwi_asm.obj m3_Hwi_asm_switch.obj m3_IntrinsicsSupport_asm.obj m3_TaskSupport_asm.obj ...
+Build of libraries done.
+clem4f package/cfg/release_pem4f.c ...
+Finished building: "../release.cfg"
+ 
+        1 file(s) copied.
+making ../src/sysbios/sysbios.aem4f ...
+gmake[1]: Nothing to be done for 'all'.
+gmake[1]: Nothing to be done for 'configPkg/linker.cmd'.
+making ../src/sysbios/sysbios.aem4f ...
+gmake[2]: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project tirtos_builds_MSP_EXP432E401Y_release_ccs ****
+
+"C:\\ti\\ccs1200\\ccs\\utils\\bin\\gmake" -k -j 12 all -O 
+ 
+making ../src/sysbios/sysbios.aem4f ...
+gmake[1]: Nothing to be done for 'all'.
+gmake[1]: Nothing to be done for 'configPkg/linker.cmd'.
+making ../src/sysbios/sysbios.aem4f ...
+gmake[2]: Nothing to be done for 'all'.
+
+**** Build Finished ****
+
+**** Clean-only build of configuration Debug for project udpecho_MSP_EXP432E401Y_tirtos_ccs ****
+
+"C:\\ti\\ccs1200\\ccs\\utils\\bin\\gmake" -k -j 12 clean -O 
+ 
+DEL /F  "syscfg\ti_drivers_config.h" "syscfg\ti_utils_build_linker.cmd.exp" "syscfg\syscfg_c.rov.xs"  "udpecho_MSP_EXP432E401Y_tirtos_ccs.hex"  "syscfg\ti_net_config.c" "syscfg\ti_ndk_config.c" "syscfg\ti_drivers_config.c"  "udpecho_MSP_EXP432E401Y_tirtos_ccs.out" 
+DEL /F "Infrastructure.obj" "callbacks.obj" "main_tirtos.obj" "p100.obj" "uartecho.obj" "udpEcho.obj" "udpEchoHooks.obj" "syscfg\ti_net_config.obj" "syscfg\ti_ndk_config.obj" "syscfg\ti_drivers_config.obj" 
+DEL /F "Infrastructure.d" "callbacks.d" "main_tirtos.d" "p100.d" "uartecho.d" "udpEcho.d" "udpEchoHooks.d" "syscfg\ti_net_config.d" "syscfg\ti_ndk_config.d" "syscfg\ti_drivers_config.d" 
+RMDIR /S/Q  "syscfg\" 
+Could Not Find C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\udpecho_MSP_EXP432E401Y_tirtos_ccs\Debug\udpecho_MSP_EXP432E401Y_tirtos_ccs.hex
+Finished clean
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project udpecho_MSP_EXP432E401Y_tirtos_ccs ****
+
+"C:\\ti\\ccs1200\\ccs\\utils\\bin\\gmake" -k -j 12 all -O 
+ 
+Building file: "../udpecho.syscfg"
+Invoking: SysConfig
+"C:/ti/ccs1200/ccs/utils/sysconfig_1.13.0/sysconfig_cli.bat" -s "C:/ti/simplelink_msp432e4_sdk_4_20_00_12/.metadata/product.json" --script "C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/udpecho.syscfg" -o "syscfg" --compiler ccs
+Running script...
+Validating...
+Generating Code (udpecho.syscfg)...
+    '/ti/ndk' -> '/ti/drivers'
+    '/ti/ndk' -> '/ti/net'
+    '/ti/drivers' -> '/ti/devices/driverlib'
+Writing C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\udpecho_MSP_EXP432E401Y_tirtos_ccs\Debug\syscfg\ti_net_config.c...
+Writing C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\udpecho_MSP_EXP432E401Y_tirtos_ccs\Debug\syscfg\ti_ndk_config.c...
+Writing C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\udpecho_MSP_EXP432E401Y_tirtos_ccs\Debug\syscfg\ti_drivers_config.c...
+Writing C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\udpecho_MSP_EXP432E401Y_tirtos_ccs\Debug\syscfg\ti_drivers_config.h...
+Writing C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\udpecho_MSP_EXP432E401Y_tirtos_ccs\Debug\syscfg\ti_utils_build_linker.cmd.exp...
+Writing C:\Users\ninja\Desktop\School (Senior)\Code Composer Workspaces\udpecho_MSP_EXP432E401Y_tirtos_ccs\Debug\syscfg\syscfg_c.rov.xs...
+Finished building: "../udpecho.syscfg"
+ 
+Building file: "syscfg/ti_net_config.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="syscfg/ti_net_config.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --obj_directory="syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "syscfg/ti_net_config.c"
+Finished building: "syscfg/ti_net_config.c"
+ 
+Building file: "syscfg/ti_drivers_config.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="syscfg/ti_drivers_config.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --obj_directory="syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "syscfg/ti_drivers_config.c"
+Finished building: "syscfg/ti_drivers_config.c"
+ 
+Building file: "../main_tirtos.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="main_tirtos.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "../main_tirtos.c"
+Finished building: "../main_tirtos.c"
+ 
+Building file: "../callbacks.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="callbacks.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "../callbacks.c"
+Finished building: "../callbacks.c"
+ 
+Building file: "../uartecho.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="uartecho.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "../uartecho.c"
+Finished building: "../uartecho.c"
+ 
+Building file: "../Infrastructure.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="Infrastructure.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "../Infrastructure.c"
+Finished building: "../Infrastructure.c"
+ 
+Building file: "syscfg/ti_ndk_config.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="syscfg/ti_ndk_config.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --obj_directory="syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "syscfg/ti_ndk_config.c"
+Finished building: "syscfg/ti_ndk_config.c"
+ 
+Building file: "../udpEcho.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="udpEcho.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "../udpEcho.c"
+Finished building: "../udpEcho.c"
+ 
+Building file: "../udpEchoHooks.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="udpEchoHooks.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "../udpEchoHooks.c"
+Finished building: "../udpEchoHooks.c"
+ 
+Building file: "../p100.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/net/bsd" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source/ti/posix/ccs" --include_path="C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="p100.d_raw" --include_path="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/udpecho_MSP_EXP432E401Y_tirtos_ccs/Debug/syscfg" --cmd_file="C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/compiler.opt"  "../p100.c"
+Finished building: "../p100.c"
+ 
+Building target: "udpecho_MSP_EXP432E401Y_tirtos_ccs.out"
+Invoking: Arm Linker
+"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432E401Y__ -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"udpecho_MSP_EXP432E401Y_tirtos_ccs.map" -i"C:/ti/simplelink_msp432e4_sdk_4_20_00_12/source" -i"C:/ti/simplelink_msp432e4_sdk_4_20_00_12/kernel/tirtos/packages" -i"C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="udpecho_MSP_EXP432E401Y_tirtos_ccs_linkInfo.xml" --rom_model -o "udpecho_MSP_EXP432E401Y_tirtos_ccs.out" "./Infrastructure.obj" "./callbacks.obj" "./main_tirtos.obj" "./p100.obj" "./uartecho.obj" "./udpEcho.obj" "./udpEchoHooks.obj" "./syscfg/ti_net_config.obj" "./syscfg/ti_ndk_config.obj" "./syscfg/ti_drivers_config.obj" "../MSP_EXP432E401Y_TIRTOS.cmd" -l"ti/net/lib/ccs/m4f/slnetsock_release.a" -l"ti/net/sntp/lib/ccs/m4f/sntp_release.a" -l"ti/net/mqtt/lib/ccs/m4f/mqtt_release.a" -l"ti/net/http/lib/ccs/m4f/httpclient_release.a" -l"ti/net/http/lib/ccs/m4f/httpserver_release.a" -l"ti/ndk/slnetif/lib/slnetifndk_msp432e4.aem4f" -l"third_party/mbedtls/ti/lib/ccs/m4f/mbedtls_msp432e4.a" -l"ti/ndk/hal/timer_bios/lib/hal_timer.aem4f" -l"ti/ndk/hal/eth_stub/lib/hal_eth_stub.aem4f" -l"ti/ndk/tools/hdlc/lib/hdlc.aem4f" -l"ti/ndk/tools/console/lib/console_min_ipv4.aem4f" -l"ti/ndk/netctrl/lib/netctrl_min_ipv4.aem4f" -l"ti/ndk/nettools/lib/nettool_ipv4.aem4f" -l"ti/ndk/hal/ser_stub/lib/hal_ser_stub.aem4f" -l"ti/ndk/hal/userled_stub/lib/hal_userled_stub.aem4f" -l"ti/ndk/stack/lib/stk.aem4f" -l"ti/ndk/os/lib/os.aem4f" -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432e4.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/dpl/lib/dpl_msp432e4.aem4f" -l"C:/Users/ninja/Desktop/School (Senior)/Code Composer Workspaces/tirtos_builds_MSP_EXP432E401Y_release_ccs/Debug/configPkg/linker.cmd"  -l"ti/devices/msp432e4/driverlib/lib/ccs/m4f/msp432e4_driverlib.a" -llibc.a 
+<Linking>
+Finished building target: "udpecho_MSP_EXP432E401Y_tirtos_ccs.out"
+ 
+
+**** Build Finished ****

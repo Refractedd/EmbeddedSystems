@@ -1,0 +1,428 @@
+/*
+ * Copyright (c) 2015-2019, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ *    ======== udpEcho.c ========
+ *    Contains BSD sockets code.
+ */
+
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
+
+
+#include <pthread.h>
+/* BSD support */
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <sys/select.h>
+#include <netdb.h>
+
+#include <ti/net/slnetutils.h>
+
+#include "p100.h"
+//#include <ti/display/Display.h>
+
+#define UDPPACKETSIZE 1472
+#define MAXPORTLEN    6
+
+//extern Display_Handle display;
+
+
+extern void fdOpenSession();
+extern void fdCloseSession();
+extern void *TaskSelf();
+
+/*
+ *  ======== echoFxn ========
+ *  Echoes UDP messages.
+ *
+ */
+/*
+void *echoFxn(void *arg0)
+{
+    int                bytesRcvd;
+    int                bytesSent;
+    int                status;
+    int                server = -1;
+    fd_set             readSet;
+    struct addrinfo    hints;
+    struct addrinfo    *res, *p;
+    struct sockaddr_in clientAddr;
+    socklen_t          addrlen;
+    char               buffer[UDPPACKETSIZE];
+    char               portNumber[MAXPORTLEN];
+    char               udpBuf[MSGLENGTH];
+
+    fdOpenSession(TaskSelf());
+
+
+    sprintf(portNumber, "%d", *(uint16_t *)arg0);
+
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family   = AF_INET;
+    hints.ai_socktype = SOCK_DGRAM;
+    hints.ai_flags    = AI_PASSIVE;
+
+    // Obtain addresses suitable for binding to
+    status = getaddrinfo(NULL, portNumber, &hints, &res);
+    if (status != 0) {
+        sprintf(udpBuf, "Error: getaddrinfo() failed: %s\n", gai_strerror(status));
+        UARTWrite(udpBuf);
+        goto shutdown;
+    }
+
+    for (p = res; p != NULL; p = p->ai_next) {
+        server = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+        if (server == -1) {
+            continue;
+        }
+
+        status = bind(server, p->ai_addr, p->ai_addrlen);
+        if (status != -1) {
+            break;
+        }
+
+        close(server);
+    }
+
+    if (server == -1) {
+        sprintf(udpBuf, "Error: echo socket not created.\n");
+        UARTWrite(udpBuf);
+        goto shutdown;
+    } else if (p == NULL) {
+        sprintf(udpBuf,"Error: bind failed.\n");
+        UARTWrite(udpBuf);
+        goto shutdown;
+    } else {
+        freeaddrinfo(res);
+        res = NULL;
+    }
+
+    do {
+
+         //  readSet and addrlen are value-result arguments, which must be reset
+         //  in between each select() and recvfrom() call
+
+        FD_ZERO(&readSet);
+        FD_SET(server, &readSet);
+        addrlen = sizeof(clientAddr);
+
+        // Wait forever for the reply
+        status = select(server + 1, &readSet, NULL, NULL, NULL);
+        if (status > 0) {
+            if (FD_ISSET(server, &readSet)) {
+                bytesRcvd = recvfrom(server, buffer, UDPPACKETSIZE, 0,
+                        (struct sockaddr *)&clientAddr, &addrlen);
+
+                if (bytesRcvd > 0) {
+                    bytesSent = sendto(server, buffer, bytesRcvd, 0,
+                            (struct sockaddr *)&clientAddr, addrlen);
+                    if (bytesSent < 0 || bytesSent != bytesRcvd) {
+                        sprintf(udpBuf, "Error: sendto failed.\n");
+                        UARTWrite(udpBuf);
+                        goto shutdown;
+                    }
+                }
+            }
+        }
+    } while (status > 0);
+
+shutdown:
+    if (res) {
+        freeaddrinfo(res);
+    }
+
+    if (server != -1) {
+        close(server);
+    }
+
+    fdCloseSession(TaskSelf());
+
+    return (NULL);
+}
+*/
+void *UDPRecvFxn(void *arg0){
+    int32_t             bytesRcvd;
+    int32_t             status;
+    int32_t             server = -1;
+    fd_set              readSet;
+    struct addrinfo     hints;
+    struct addrinfo     *res, *p;
+    struct sockaddr_in  clientAddr;
+    socklen_t           addrlen;
+    char                buffer[UDPPACKETSIZE];
+    char                portNumber[MAXPORTLEN];
+    char                xmitbuf[MSGLENGTH];
+    int32_t             msgnext;
+
+    fdOpenSession(TaskSelf());
+
+    UARTWrite("UDP Recv started");
+
+    sprintf(portNumber, "%d", *(uint16_t *)arg0);
+
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family     = AF_INET;
+    hints.ai_socktype   = SOCK_DGRAM;
+    hints.ai_flags      = AI_PASSIVE;
+
+    status = getaddrinfo(NULL, portNumber, &hints, &res);
+    if (status != 0)
+    {
+        sprintf(xmitbuf,  "Error: getaddrinfo() failed: %s", gai_strerror(status));
+        UARTWrite(xmitbuf);
+        goto shutdown;
+    }
+
+    for (p = res; p != NULL; p = p->ai_next)
+    {
+        server = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+        if(server == -1)
+            continue;
+
+        status = bind(server, p->ai_addr, p->ai_addrlen);
+        if(status != 1)
+            break;
+
+        close(server);
+    }
+
+    if (server == -1)
+    {
+        UARTWrite("Error: recv socket not created.");
+        goto shutdown;
+    }
+    else if (p == NULL)
+    {
+        UARTWrite("Error: bind failed.");
+        goto shutdown;
+    }
+    else
+    {
+        freeaddrinfo(res);
+        res = NULL;
+    }
+
+    Glo.Net.server = server;
+    Semaphore_post(Glo.Bios.UDPLaunchSem);
+
+    do
+    {
+
+        FD_ZERO(&readSet);
+        FD_SET(server, &readSet);
+        addrlen = sizeof(clientAddr);
+
+        status = select(server + 1, &readSet, NULL, NULL, NULL);
+        if(status > 0)
+        {
+            if(FD_ISSET(server, &readSet))
+            {
+                bytesRcvd = recvfrom(server, buffer, UDPPACKETSIZE, 0, (struct sockaddr *)&clientAddr, &addrlen);
+
+                if(bytesRcvd > 0)
+                {
+                    buffer[bytesRcvd] = 0;
+                    UARTWriteProtected("UDP> ");
+                    UARTWriteProtected(buffer);
+                    UARTWriteProtected("\r\n");
+
+                    Semaphore_pend(Glo.Bios.UDPInSem, BIOS_WAIT_FOREVER);
+                    strcpy(Glo.NetInQ.Messages[Glo.NetInQ.msgWriting].msgBuf, buffer);
+                    AddPayload(Glo.NetInQ.Messages[Glo.NetInQ.msgWriting].msgBuf);
+
+                    msgnext = Glo.NetInQ.msgWriting + 1;
+                    if(msgnext >= MSGCOUNT)
+                        msgnext = 0;
+                    Glo.NetInQ.msgWriting = msgnext;
+                    Semaphore_post(Glo.Bios.UDPInSem);
+                }
+            }
+        }
+    } while(1);
+
+shutdown:
+    if (res) {
+        freeaddrinfo(res);
+    }
+
+    if (server != -1) {
+        close(server);
+    }
+
+    fdCloseSession(TaskSelf());
+
+    return (NULL);
+}
+
+void *UDPXmitFxn(void *arg0)
+{
+    int32_t             bytesSent;
+    int32_t             status;
+    int32_t             server = -1;
+    fd_set              readSet;
+    fd_set              writeSet;
+    struct addrinfo     hints;
+    struct addrinfo     *res, *p;
+    struct sockaddr_in  clientAddr;
+    socklen_t           addrlen;
+    char                portNumber[MAXPORTLEN];
+    char                xmitbuf[MSGLENGTH];
+    char                *buff;
+    char                *loc;
+    int32_t             payloadnext;
+    int                 bytesRequested;
+    int32_t             AddrByte;
+    uint32_t            PortWord;
+
+    fdOpenSession(TaskSelf());
+
+    UARTWriteProtected("UDP Xmit Started\r\n");
+
+    sprintf(portNumber, "%d", *(uint16_t *)arg0);
+
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family     = AF_INET;
+    hints.ai_socktype   = SOCK_DGRAM;
+    hints.ai_flags      = AI_PASSIVE;
+
+    status = getaddrinfo(NULL, portNumber, &hints, &res);
+    if (status != 0)
+    {
+        sprintf(xmitbuf,  "Error: getaddrinfo() failed: %s", gai_strerror(status));
+        UARTWrite(xmitbuf);
+        goto shutdown;
+    }
+
+    for (p = res; p != NULL; p = p->ai_next)
+    {
+        server = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+        if(server == -1)
+            continue;
+    }
+    if (server == -1)
+    {
+        UARTWrite("Error: xmit socket not created.");
+        goto shutdown;
+    }
+    else
+    {
+        freeaddrinfo(res);
+        res = NULL;
+    }
+
+    do
+    {
+        FD_ZERO(&readSet);
+        FD_SET(server, &readSet);
+        addrlen = sizeof(clientAddr);
+
+        Semaphore_pend(Glo.Bios.UDPOutSem, BIOS_WAIT_FOREVER);
+        Semaphore_pend(Glo.Bios.UDPOutReadSem, BIOS_WAIT_FOREVER);
+
+        buff = Glo.NetOutQ.payloads[Glo.NetOutQ.payloadReading].payload;
+        loc = buff;
+        if(!loc) continue;
+        AddrByte = atoi(loc);
+        clientAddr.sin_addr.s_addr = AddrByte;
+
+        loc = strchr(loc, '.');
+        if(!loc) continue;
+        loc++;
+        AddrByte = atoi(loc);
+        clientAddr.sin_addr.s_addr |= AddrByte << 8;
+
+        loc = strchr(loc, '.');
+        if(!loc) continue;
+        loc++;
+        AddrByte = atoi(loc);
+        clientAddr.sin_addr.s_addr |= AddrByte << 16;
+
+        loc = strchr(loc, '.');
+        if(!loc) continue;
+        loc++;
+        AddrByte = atoi(loc);
+        clientAddr.sin_addr.s_addr |= AddrByte << 24;
+
+        Glo.Net.ClientAddr = clientAddr.sin_addr.s_addr;
+
+        loc = strchr(loc, ':');
+        if(!loc) continue;
+        loc++;
+        PortWord = atoi(loc);
+
+        Glo.Net.ClientPort = PortWord;
+
+        clientAddr.sin_port = (PortWord & 0xFF00) >> 8;
+        clientAddr.sin_port |= (PortWord & 0xFF) << 8;
+
+        clientAddr.sin_family = AF_INET;
+
+        loc = strchr(loc, '-');
+        if(!loc) continue;
+
+        bytesRequested = strlen(loc);
+
+        status = select(server + 1, NULL, &writeSet, NULL, NULL);
+
+        bytesSent = sendto(server, loc, bytesRequested, 0, (struct sockaddr *)&clientAddr, addrlen);
+
+        if(bytesSent < 0 || bytesSent != bytesRequested){
+            UARTWrite("Error: sendto failed.");
+            //Glo.ErrorCounts[NET]++;
+        }
+
+        payloadnext = Glo.NetOutQ.payloadReading + 1;
+        if(payloadnext >= PAYLOADCOUNT)
+            payloadnext = 0;
+        Glo.NetOutQ.payloadReading = payloadnext;
+        Semaphore_post(Glo.Bios.UDPOutReadSem);
+    } while(1);
+
+shutdown:
+    if (res) {
+        freeaddrinfo(res);
+    }
+
+    if (server != -1) {
+        close(server);
+    }
+
+    fdCloseSession(TaskSelf());
+
+    return (NULL);
+}
+
+
+
